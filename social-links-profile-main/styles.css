@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 1vw;
+}
+
+.content-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.content-card {
+    height: 75%;
+    width: 22.5%;
+    border-radius: 5%;
+    display: flex;
+    background-color: #1f1f1f;
+}
+
+.content-card-inner-container {
+    flex: 1;
+    margin: 15% 5% 10% 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image-container {
+    height: 75px;
+    width: 75px;
+    margin-bottom: 10%;
+}
+
+.profile-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.name-container, .location-container, .bio-container {
+    height: fit-content;
+    width: 100%;
+    margin: 0 5%;
+    text-align: center;
+}
+
+.name-container {
+    margin-bottom: 2.5%;
+}
+
+.name-label {
+    font-size: 2rem;
+}
+
+.location-container {
+    margin-bottom: 10%;
+}
+
+.location-label {
+    color: #c5f82a;
+}
+
+.bio-container {
+    margin-bottom: 5%;
+}
+
+.bio {
+    font-size: .85rem;
+    color: 	#dcdcdc;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+button {
+  all: unset;
+  cursor: pointer; /* Optional: keeps pointer behavior */
+}
+
+.link {
+    width: 80%;
+    flex-grow: 1;
+    border-radius: 7.5px;
+    background-color: #333333;
+}
+
+.link:hover {
+    background-color: 	#c5f82a;
+    
+    .link-label {
+        color: black;
+    }
+}
+
+label, .bio {
+    text-align: center;
+    color: white;
+}
+
+@media (min-width: 376px) and (max-width: 600px) {
+
+    html, body {
+        font-size: 5vw;
+    }
+
+    .content-card {
+        width: 90%;
+    }
+
+    .content-card-inner-container {
+        margin: 5%;
+    }
+
+    .profile-image-container {
+        height: 150px;
+        width: 150px;
+        margin-bottom: 2.5%;
+    }
+
+    .name-label {
+        font-size: 1.5rem;
+    }
+
+    .location-label {
+        font-size: .85rem;
+    }
+
+    .bio {
+        font-size: .75rem;
+    }
+
+}
+
+@media (max-width: 375px) {
+
+
+    html, body {
+        font-size: 5vw;
+    }
+
+    .content-card {
+        width: 90%;
+    }
+
+    .content-card-inner-container {
+        margin: 5%;
+    }
+
+    .profile-image-container {
+        margin-bottom: 2.5%;
+    }
+
+}
+
