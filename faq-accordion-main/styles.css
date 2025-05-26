@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 1.5vw;
+}
+
+.page-container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.backgrounds-container {
+    height: 100%;
+    width: 100%;
+}
+
+.background-top-container {
+    height: 30%;
+    background-image: url("assets/images/background-pattern-desktop.svg");
+    z-index: -1;
+}
+
+.background-bottom-container {
+    height: 70%;
+    background-color: antiquewhite;
+    z-index: -1;
+}
+
+.content-card-container {
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-card {
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header-content-container {
+    height: 20%;
+    margin: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.main-header-bullet-point-container {
+    height: 30px;
+    width: fit-content;
+}
+
+.main-header-bullet-point {
+    height: 100%;
+    width: 100%;
+}
+
+.main-header {
+    height: fit-content;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.content-card-body-container {
+    border: 1px solid black;
+    margin: 20px;
+    margin-top: 0;
+    flex-grow: 1;
+}
