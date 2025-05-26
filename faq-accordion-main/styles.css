@@ -6,7 +6,6 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     font-size: 1.5vw;
 }
 
@@ -44,16 +43,19 @@ html, body {
     bottom: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .content-card {
-    height: 500px;
+    min-height: 500px;
     width: 400px;
     background-color: white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -250px); /* Half of min-height */
 }
 
 .main-header-content-container {
