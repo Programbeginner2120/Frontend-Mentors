@@ -18,18 +18,15 @@ html, body {
 .backgrounds-container {
     min-height: 100vh;
     width: 100%;
-    height: fit-content;
 }
 
 .background-top-container {
-    min-height: 30vh;
     height: 30vh;
     background-image: url("assets/images/background-pattern-desktop.svg");
 }
 
 .background-bottom-container {
-    min-height: 70vh;
-    height: 30vh;
+    height: 70vh;
     background-color: antiquewhite;
 }
 
@@ -94,17 +91,11 @@ html, body {
     display: block;
 }
 
-/* .dropdown-summary::-webit-details-marker {
-    display: none;
-}
-
-.dropdown-summary::marker {
-    display: none;
-} */
-
 .dropdown-container {
     position: relative;
     display: flex;
+    margin-bottom: 10px;
+    border-bottom: 1px solid purple;
 }
 
 .dropdown-details {
@@ -137,4 +128,25 @@ html, body {
 
 .dropdown-content {
     color: purple;
+}
+
+@media (max-width: 600px) {
+
+    .html, body {
+        font-size: 5vw;
+    }
+
+    .content-card {
+        width: 80%;
+    }
+
+    .background-top-container {
+        background-image: url("assets/images/background-pattern-mobile.svg");
+    }
+
+    .dropdown-summary, .dropdown-content {
+        max-width: 75%;
+        font-size: 16px;
+    }
+
 }
