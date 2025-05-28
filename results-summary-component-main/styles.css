@@ -38,8 +38,9 @@ html, body {
 }
 
 .result-label {
+    font-weight: bold;
     margin: 10% 0;
-    color: gray;
+    color: lightgray;
 }
 
 .result-score-container {
@@ -60,7 +61,7 @@ html, body {
 }
 
 .total {
-    color: gray;
+    color: lightgray;
 }
 
 .result-text-container {
@@ -117,6 +118,10 @@ html, body {
     padding: 0 2.5%;
 }
 
+.attribute-label {
+    margin-left: 5px;
+}
+
 .score-label {
     flex-grow: 1;
     text-align: right;
@@ -150,6 +155,7 @@ html, body {
 }
 
 @media (max-width: 600px) {
+
     .content-card {
         height: 100%;
         width: 100%;
@@ -169,12 +175,16 @@ html, body {
 
     .result-score-container {
         height: 300px;
-        width: 40%;
+        width: 33.33%;
         border: 1px solid black;
     }
 
+    .result-label, .result-text-short-description {
+        font-size: 1.5rem;
+    }
+
     .result-text-long-description {
-        margin-bottom: 5%;
+        margin-bottom: 10%;
     }
 
     .metrics-half {
@@ -184,8 +194,18 @@ html, body {
         padding: 0;
     }
 
+    .attribute-container {
+        flex-grow: 1;
+    }
+
+    .attribute {
+        flex-grow: 1;
+    }
+
     .continue-button {
         width: 95%;
         margin: auto 2.5%;
+        margin-top: 2.5%;
+        margin-bottom: 0;
     }
 }
