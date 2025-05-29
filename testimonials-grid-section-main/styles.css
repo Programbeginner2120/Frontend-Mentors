@@ -11,28 +11,36 @@ html, body {
 }
 
 .page-container {
+    position: relative;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: lightgray;
+    z-index: -20;
 }
 
 .content-cards-container {
     height: 85%;
-    width: 75%;
+    width: 90%;
     display: grid;
-    grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
     gap: 16px 16px;
 }
 
 .content-card {
-    border: 1px solid red;
     border-radius: 10px;
     height: 100%;
     width: 100%;
     position: relative;
     z-index: -10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 7.5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .person-info-container {
@@ -42,9 +50,7 @@ html, body {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    position: absolute;
-    top: 5%;
-    left: 5%;
+    margin-left: 5%;
 }
 
 .person-name-title-container {
@@ -71,10 +77,8 @@ html, body {
     align-items: center;
     height: fit-content;
     width: 90%;
-    height: 80%;
+    height: fit-conent;
     margin: 0 5%;
-    position: absolute;
-    top: 10%;
 }
 
 .testimonial-title {
@@ -91,7 +95,7 @@ html, body {
 }
 
 .card-1 {
-    grid-area: 1 / 1 / 2 / span 3;
+    grid-area: 1 / 1 / 2 / 3;
     background-color: purple;
 }
 
@@ -103,17 +107,38 @@ html, body {
 }
 
 .card-2 {
-    grid-area: 1 / 4 / 2 / 5;
+    grid-area: 1 / 3 / 2 / 4;
+    background-color: gray;
 }
 
 .card-3 {
-    grid-area: 2 / 1 / 3 / span 2;
+    grid-area: 2 / 1 / 3 / 2;
+    padding: 0 10%;
+    background-color: white;
+}
+
+.card-3-testimonial-title, .card-3-testimonial, .card-5-testimonial-title, .card-5-testimonial {
+    color: black;
 }
 
 .card-4 {
-    grid-area: 2 / 3 / span 1 / span 2;
+    grid-area: 2 / 2 / 3 / 4;
+    background-color: #1f1e1c;
+}
+
+.card-4-person-info-container {
+    color: white;
 }
 
 .card-5 {
-    grid-area: 1 / span 3 / span 2 / span 1;
+    grid-area: 1 / 4 / 3 / 5;
+    background-color: white;
+    gap: 2.5%;
+    border: 1px solid black;
 }
+
+.card-5-testimonial {
+    line-height: 1.5;
+}
+
+
