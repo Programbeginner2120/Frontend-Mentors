@@ -175,6 +175,15 @@ html, body {
         padding: 0;
     }
 
+    .person-image {
+        height: 45px;
+        width: 45px;
+    }
+
+    .card-2-testimonial, .card-5-testimonial {
+        font-size: .6rem;
+    }
+
 }
 
 
