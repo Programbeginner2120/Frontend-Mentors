@@ -140,4 +140,41 @@ html, body {
     line-height: 1.5;
 }
 
+@media (max-width: 600px) {
+
+    html, body {
+        overflow: auto;
+        font-size: 2.5vh;
+    }
+
+    .page-container {
+        height: 200vh;
+    }
+
+    .content-cards-container {
+        display: flex;
+        flex-direction: column;
+        height: 95%;
+    }
+
+    /* Using flex-grow to allocate portions */
+
+    .card-1 {
+        flex: 2;
+    }
+
+    .card-2, .card-3 {
+        flex: 1;
+    }
+
+    .card-4, .card-5 {
+        flex: 2;
+    }
+
+    .card-3 {
+        padding: 0;
+    }
+
+}
+
 
