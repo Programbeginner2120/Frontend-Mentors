@@ -134,7 +134,6 @@ html, body {
     grid-area: 1 / 4 / 3 / 5;
     background-color: white;
     gap: 2.5%;
-    border: 1px solid black;
 }
 
 .card-5-testimonial {
