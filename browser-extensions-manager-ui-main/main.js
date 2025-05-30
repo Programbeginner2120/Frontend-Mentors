@@ -30,11 +30,11 @@ function _initializeColorStateButton() {
 
 function _initializeEventListeners() {
     _initializeColorStateButtonEventListener();
+    _initializeFilterButtonEventListener();
 }
 
 function _initializeColorStateButtonEventListener() {
     try {
-        const pageContainer = document.querySelector('.page-container');
         const pageColorStateButtonContainer = document.querySelector('.main-toolbar-color-state-button-container');
         document.addEventListener('click', (event) => {
             if (!pageColorStateButtonContainer.contains(event.target)) return;
@@ -50,6 +50,88 @@ function _initializeColorStateButtonEventListener() {
     } catch (error) {
         console.error("Error initializing color state button event listener: ", error);
     }
+}
+
+function _initializeFilterButtonEventListener() {
+    document.querySelectorAll('.extension-filter-button').forEach(button => {
+        document.addEventListener('click', (event) => {
+            if (!button.contains(event.target)) return;
+
+            _toggleIsActiveOnFilterButton(button);
+
+            // const buttonText = button.innerHTML;
+            // if (buttonText === 'All') {
+            //     _processAllButtonPress(button);
+            // } else if (buttonText === 'Active') {
+            //     _processActiveButtonPress(button);
+            // } else if (buttonText === 'Inactive') {
+            //     _processInactiveButtonPress(button);
+            // }
+        });
+    });
+}
+
+function _processAllButtonPress(button) {
+
+}
+
+function _processActiveButtonPress(button) {
+
+}
+
+function _processInactiveButtonPress(button) {
+
+}
+
+function _populateExtensions() {
+    fetch('./data.json').then(response => {
+        if (!response) {
+            throw new Error("Error retrieving extension data");
+        }
+        return response.json();
+    }).then(json => {
+        const extensionsGrid = document.querySelector('.extensions-grid');
+        json.forEach((jsonElement, index) => {
+            _createExtension(extensionsGrid, jsonElement, index);
+        })
+    })
+    .catch(error => {
+        console.error("Error populating extension data: ", error);
+    })
+}
+
+function _createExtension(extensionsGrid, jsonElement, index) {
+    const logo = jsonElement['logo'];
+    const name = jsonElement['name'];
+    const description = jsonElement['description'];
+    const isActive = jsonElement['isActive'];
+
+    const createdElement = document.createElement('div');
+    createdElement.setAttribute('data-id', index);
+    createdElement.classList.add('extension-card');
+    createdElement.innerHTML = `
+    <div class='extension-card-info-container extension-card-info-container-1'>
+        <div class='extension-card-info-container extension-card-info-container-2'>
+            <img class='extension-card-image extension-card-image-${index}' src="${logo}" />
+            <div class='extension-card-info-container extension-card-info-container-3'>
+                <label class='extension-card-title extension-card-title-${index}'>${name}</label>
+                <p class='extension-card-description extension-card-description-${index}'>${description}</p>
+            </div>
+        </div>
+        <div class='extension-card-info-container extension-card-info-container-4'>
+            <button class='extension-card-button remove-extension-button'>Remove</button>
+            <label class="extension-toggle-switch extension-toggle-switch-${index}">
+                <input type="checkbox" ${isActive ? "checked" : ""}>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    `;
+
+    extensionsGrid.appendChild(createdElement);
+
+    const browserExtension = new BrowserExtension(index, logo, name, description, isActive);
+    extensionsList.push(browserExtension);
 }
 
 function _toggleDarkModeToggleableElements(toggleToDarkMode) {
@@ -84,54 +166,15 @@ function _toggleDarkModeToggleableElements(toggleToDarkMode) {
     }
 }
 
-function _populateExtensions() {
-    fetch('./data.json').then(response => {
-        if (!response) {
-            throw new Error("Error retrieving extension data");
-        }
-        return response.json();
-    }).then(json => {
-        const extensionsGrid = document.querySelector('.extensions-grid');
-        json.forEach((jsonElement, index) => {
-            _createExtension(extensionsGrid, jsonElement, index);
-        })
+function _toggleIsActiveOnFilterButton(buttonElement) {
+    Array.from(document.querySelectorAll('.extension-filter-button')).filter(elem => {
+        return elem.innerHTML !== buttonElement.innerHTML;
     })
-    .catch(error => {
-        console.error("Error populating extension data: ", error);
-    })
-}
-
-function _createExtension(extensionsGrid, jsonElement, index) {
-    const logo = jsonElement['logo'];
-    const name = jsonElement['name'];
-    const description = jsonElement['description'];
-    const isActive = jsonElement['isActive'];
-
-    const createdElement = document.createElement('div');
-    createdElement.classList.add('extension-card');
-    createdElement.innerHTML = `
-    <div class='extension-card-info-container extension-card-info-container-1'>
-        <div class='extension-card-info-container extension-card-info-container-2'>
-            <img class='extension-card-image extension-card-image-${index}' src="${logo}" />
-            <div class='extension-card-info-container extension-card-info-container-3'>
-                <label class='extension-card-title extension-card-title-${index}'>${name}</label>
-                <p class='extension-card-description extension-card-description-${index}'>${description}</p>
-            </div>
-        </div>
-        <div class='extension-card-info-container extension-card-info-container-4'>
-            <button class='extension-card-button remove-extension-button'>Remove</button>
-            <label class="extension-toggle-switch extension-toggle-switch-${index}">
-                <input type="checkbox" ${isActive ? "checked" : ""}>
-                <span class="slider"></span>
-            </label>
-        </div>
-    </div>
-    `;
-
-    extensionsGrid.appendChild(createdElement);
-
-    const browserExtension = new BrowserExtension(index, logo, name, description, isActive);
-    extensionsList.push(browserExtension);
+    .forEach(elem => {
+        elem.setAttribute('data-is-active', false);
+    });
+    const isActive = buttonElement.getAttribute('data-is-active') === 'true';
+    buttonElement.setAttribute('data-is-active', String(!isActive));
 }
 
 document.addEventListener('DOMContentLoaded', main);

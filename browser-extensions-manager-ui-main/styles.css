@@ -83,6 +83,10 @@ html, body {
     background-color: var(--dark-mode-color-state-button-container-color);
 }
 
+.main-toolbar-color-state-button-container:hover {
+    cursor: pointer;
+}
+
 .main-toolbar-color-state-button {
     all: unset;
     height: 50%;
@@ -120,12 +124,17 @@ html, body {
     background-color: var(--light-mode-filter-button-color);
 }
 
+.extension-filter-button[data-is-active="true"] {
+    background-color: #c5f82a;
+}
+
 .extension-filter-button-dark-mode {
     background-color: var(--dark-mode-filter-button-color);
 }
 
 .extension-filter-button:hover {
     background-color: #c5f82a;
+    cursor: pointer;
 }
 
 .extensions-grid {
@@ -142,6 +151,10 @@ html, body {
     border: 1px solid black;
     height: 200px;
     position: relative;
+}
+
+.extension-card-hidden {
+    display: none;
 }
 
 .extension-card-info-container {
@@ -243,5 +256,10 @@ input:checked + .slider::before {
 
 .remove-extension-button-dark-mode {
     background-color: var(--dark-mode-filter-button-color);
+}
+
+.remove-extension-button:hover {
+    background-color: #c5f82a;
+    cursor: pointer;
 }
 
