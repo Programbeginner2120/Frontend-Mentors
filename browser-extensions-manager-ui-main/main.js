@@ -6,13 +6,13 @@ let pageColorState = ColorState.LightMode;
 const extensionsList = [];
 
 async function main() {
-    initializePage();
+    await initializePage();
 }
 
-function initializePage() {
+async function initializePage() {
+    await _populateExtensions();
     _initializeColorStateButton();
     _initializeEventListeners();
-    _populateExtensions();
 }
 
 function _initializeColorStateButton() {
@@ -31,6 +31,7 @@ function _initializeColorStateButton() {
 function _initializeEventListeners() {
     _initializeColorStateButtonEventListener();
     _initializeFilterButtonEventListener();
+    _initializeRemoveButtonEventListener();
 }
 
 function _initializeColorStateButtonEventListener() {
@@ -67,6 +68,16 @@ function _initializeFilterButtonEventListener() {
             } else if (buttonText === 'Inactive') {
                 _processInactiveButtonPress(button);
             }
+        });
+    });
+}
+
+function _initializeRemoveButtonEventListener() {
+    document.querySelectorAll('.remove-extension-button').forEach(button => {
+        button.addEventListener('click', event => {
+            if (!button.contains(event.target)) return;
+
+            _removeExtensionCard(button.getAttribute('data-id'));
         });
     });
 }
@@ -117,21 +128,19 @@ function _resetVisibilityOfExtensionCards(setVisible) {
     });
 }
 
-function _populateExtensions() {
-    fetch('./data.json').then(response => {
-        if (!response) {
-            throw new Error("Error retrieving extension data");
-        }
-        return response.json();
-    }).then(json => {
+async function _populateExtensions() {
+    try {
+        const response = await fetch('./data.json');
+        if (!response.ok) throw new Error("Failed to fetch extension data");
+        const json = await response.json();
+
         const extensionsGrid = document.querySelector('.extensions-grid');
         json.forEach((jsonElement, index) => {
             _createExtension(extensionsGrid, jsonElement, index);
-        })
-    })
-    .catch(error => {
+        });
+    } catch (error) {
         console.error("Error populating extension data: ", error);
-    })
+    }
 }
 
 function _createExtension(extensionsGrid, jsonElement, index) {
@@ -153,7 +162,7 @@ function _createExtension(extensionsGrid, jsonElement, index) {
             </div>
         </div>
         <div class='extension-card-info-container extension-card-info-container-4'>
-            <button class='extension-card-button remove-extension-button'>Remove</button>
+            <button class='extension-card-button remove-extension-button' data-is-active='false' data-id='${index}'>Remove</button>
             <label class="extension-toggle-switch extension-toggle-switch-${index}">
                 <input type="checkbox" ${isActive ? "checked" : ""}>
                 <span class="slider"></span>
@@ -209,6 +218,19 @@ function _toggleIsActiveOnFilterButton(buttonElement) {
     });
     const isActive = buttonElement.getAttribute('data-is-active') === 'true';
     buttonElement.setAttribute('data-is-active', String(!isActive));
+}
+
+function _removeExtensionCard(cardId) {
+    const extensionsGrid = document.querySelector('.extensions-grid');
+
+
+    const elementToRemove = Array.from(document.querySelectorAll('.extension-card')).find(elem => Number(elem.getAttribute('data-id')) === Number(cardId));
+    if (!elementToRemove) {
+        throw new Error("Error removing extension");
+    }
+
+    extensionsGrid.removeChild(elementToRemove);
+    extensionsList = extensionsList.filter(elem => elem.id !== cardId);
 }
 
 document.addEventListener('DOMContentLoaded', main);
