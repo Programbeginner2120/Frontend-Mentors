@@ -41,27 +41,12 @@ html, body {
     background-color: var(--light-mode-toolbar-color);
     border-radius: 15px;
     margin-top: 1%;
+    padding: 0 2.5%;
+    border: 1px solid black;
 }
 
 .main-toolbar-dark-mode {
     background-color: var(--dark-mode-toolbar-color);
-}
-
-.main-toolbar-content-container {
-    display: flex;
-    gap: 8px;
-}
-
-.main-toolbar-content-container-1 {
-    position: absolute;
-    left: 2.5%;
-    right: 8%;
-}
-
-.main-toolbar-content-container-2 {
-    position: absolute;
-    right: 2.5%;
-    border: 1px solid black;
 }
 
 .main-toolbar-extensions-icon {
@@ -261,5 +246,57 @@ input:checked + .slider::before {
 .remove-extension-button:hover {
     background-color: #c5f82a;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+
+    .main-toolbar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90px;
+        gap: 16px;
+    }
+
+    .main-toolbar-extensions-icon {
+        position: absolute;
+        top: 10%;
+    }
+
+    .main-toolbar-searchbar {
+        position: absolute;
+        left: 15%;
+        bottom: 5%;
+    }
+
+    .main-toolbar-color-state-button-container {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        right: 17.5%;
+        bottom: 7.5%;
+    }
+
+    .extensions-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 1%;
+    }
+
+    .extensions-filter-buttons {
+        position: static;
+    }
+
+    .extensions-grid {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .extensions-list-title {
+        all: unset;
+    }
+
 }
 
