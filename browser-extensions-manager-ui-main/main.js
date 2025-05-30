@@ -59,24 +59,37 @@ function _initializeFilterButtonEventListener() {
 
             _toggleIsActiveOnFilterButton(button);
 
-            // const buttonText = button.innerHTML;
-            // if (buttonText === 'All') {
-            //     _processAllButtonPress(button);
-            // } else if (buttonText === 'Active') {
-            //     _processActiveButtonPress(button);
-            // } else if (buttonText === 'Inactive') {
-            //     _processInactiveButtonPress(button);
-            // }
+            const buttonText = button.innerHTML;
+            if (buttonText === 'All') {
+                _processAllButtonPress(button);
+            } else if (buttonText === 'Active') {
+                _processActiveButtonPress(button);
+            } else if (buttonText === 'Inactive') {
+                _processInactiveButtonPress(button);
+            }
         });
     });
 }
 
 function _processAllButtonPress(button) {
-
+    document.querySelectorAll('.extension-cards').forEach(card => {
+        card.classList.remove('extension-card-hidden');
+    });
 }
 
 function _processActiveButtonPress(button) {
-
+    const extensionCards = document.querySelectorAll('.extension-card');
+    const isActive = button.getAttribute('data-is-active') === 'true';
+    if (isActive) {
+        Array.from(extensionCards).filter(card => {
+            const selectedExtension = extensionsList.find(extension => Number(card.getAttribute('data-id')) === extension.id);
+            return !selectedExtension.isActive;
+        }).forEach(card => card.classList.add('extension-card-hidden'));
+    } else {
+        extensionCards.forEach(card => {
+            card.classList.remove('extension-card-hidden');
+        });
+    }
 }
 
 function _processInactiveButtonPress(button) {
