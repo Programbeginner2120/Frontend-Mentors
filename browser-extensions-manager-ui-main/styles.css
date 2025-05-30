@@ -7,6 +7,8 @@
     --dark-mode-color-state-button-container-color: transparent;
     --light-mode-filter-button-color: white;
     --dark-mode-filter-button-color: slategray;
+    --light-mode-remove-extension-button-color: white;
+    --dark-mode-remove-extension-button-color: slategray;
     --element-width: 80%;
 }
 
@@ -132,21 +134,63 @@ html, body {
     gap: 10px;
     padding: 10px;
     width: 80%;
-    border: 1px solid black;
 }
 
 .extension-card {
     border-radius: 20px;
     background-color: transparent;
     border: 1px solid black;
+    height: 200px;
+    position: relative;
+}
+
+.extension-card-info-container {
+    display: flex;
+}
+
+.extension-card-info-container-1 {
+    flex-direction: column;
+}
+
+.extension-card-info-container-2 {
+    margin: 2.5%;
+    gap: 16px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.extension-card-info-container-3 {
+    flex-direction: column;
+    width: 70%;
+}
+
+.extension-card-info-container-4 {
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    margin: 0 2.5% 5% 2.5%;
+}
+
+.extension-card-description {
+    all: unset;
+}
+
+.extension-card-image {
+    height: 45px;
+    width: 45px;
+}
+
+.extension-card-description {
+    font-size: .75rem;
 }
 
 /* Beginning of ChatGPT generated code */
-/* .switch {
-    position: relative;
+.extension-toggle-switch {
+    position: absolute;
     display: inline-block;
     width: 50px;
     height: 28px;
+    right: 0;
 }
 
 .switch input {
@@ -185,6 +229,19 @@ input:checked + .slider {
 
 input:checked + .slider::before {
     transform: translateX(22px);
-} */
+}
 /* End of ChatGPT generated code */
+
+.remove-extension-button {
+    all: unset;
+    border-radius: 999px;
+    height: 2rem;
+    width: 75px;
+    text-align: center;
+    background-color: var(--light-mode-filter-button-color);
+}
+
+.remove-extension-button-dark-mode {
+    background-color: var(--dark-mode-filter-button-color);
+}
 

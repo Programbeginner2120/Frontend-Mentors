@@ -58,6 +58,7 @@ function _toggleDarkModeToggleableElements(toggleToDarkMode) {
     const pageColorStateButtonContainer = document.querySelector('.main-toolbar-color-state-button-container');
     const pageColorStateButton = document.querySelector('.main-toolbar-color-state-button');
     const extensionFilterButtons = document.querySelectorAll('.extension-filter-button');
+    const removeExtensionButtons = document.querySelectorAll('.remove-extension-button');
     if (toggleToDarkMode) {
         pageContainer.classList.add('page-container-dark-mode');
         mainToolbar.classList.add('main-toolbar-dark-mode');
@@ -66,6 +67,9 @@ function _toggleDarkModeToggleableElements(toggleToDarkMode) {
         extensionFilterButtons.forEach(button => {
             button.classList.add('extension-filter-button-dark-mode');
         });
+        removeExtensionButtons.forEach(button => {
+            button.classList.add('remove-extension-button-dark-mode');
+        });
     } else {
         pageContainer.classList.remove('page-container-dark-mode');
         mainToolbar.classList.remove('main-toolbar-dark-mode');
@@ -73,6 +77,9 @@ function _toggleDarkModeToggleableElements(toggleToDarkMode) {
         pageColorStateButton.style.backgroundImage = "url('./assets/images/icon-sun.svg')";
         extensionFilterButtons.forEach(button => {
             button.classList.remove('extension-filter-button-dark-mode');
+        });
+        removeExtensionButtons.forEach(button => {
+            button.classList.remove('remove-extension-button-dark-mode');
         });
     }
 }
@@ -104,12 +111,14 @@ function _createExtension(extensionsGrid, jsonElement, index) {
     createdElement.classList.add('extension-card');
     createdElement.innerHTML = `
     <div class='extension-card-info-container extension-card-info-container-1'>
-        <img class='extension-card-image extension-card-image-${index}' src="${logo}" />
         <div class='extension-card-info-container extension-card-info-container-2'>
-            <label class='extension-card-title extension-card-title-${index}'>${name}</label>
-            <p class='extension-card-description extension-card-description-${index}'>${description}</p>
+            <img class='extension-card-image extension-card-image-${index}' src="${logo}" />
+            <div class='extension-card-info-container extension-card-info-container-3'>
+                <label class='extension-card-title extension-card-title-${index}'>${name}</label>
+                <p class='extension-card-description extension-card-description-${index}'>${description}</p>
+            </div>
         </div>
-        <div class='extension-card-info-container extension-card-info-container-3'>
+        <div class='extension-card-info-container extension-card-info-container-4'>
             <button class='extension-card-button remove-extension-button'>Remove</button>
             <label class="extension-toggle-switch extension-toggle-switch-${index}">
                 <input type="checkbox" ${isActive ? "checked" : ""}>
