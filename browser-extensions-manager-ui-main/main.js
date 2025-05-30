@@ -72,12 +72,11 @@ function _initializeFilterButtonEventListener() {
 }
 
 function _processAllButtonPress(button) {
-    document.querySelectorAll('.extension-cards').forEach(card => {
-        card.classList.remove('extension-card-hidden');
-    });
+    _resetVisibilityOfExtensionCards(true);
 }
 
 function _processActiveButtonPress(button) {
+    _resetVisibilityOfExtensionCards(true);
     const extensionCards = document.querySelectorAll('.extension-card');
     const isActive = button.getAttribute('data-is-active') === 'true';
     if (isActive) {
@@ -93,7 +92,29 @@ function _processActiveButtonPress(button) {
 }
 
 function _processInactiveButtonPress(button) {
+    _resetVisibilityOfExtensionCards(true);
+    const extensionCards = document.querySelectorAll('.extension-card');
+    const isActive = button.getAttribute('data-is-active') === 'true';
+    if (isActive) {
+        Array.from(extensionCards).filter(card => {
+            const selectedExtension = extensionsList.find(extension => Number(card.getAttribute('data-id')) === extension.id);
+            return selectedExtension.isActive;
+        }).forEach(card => card.classList.add('extension-card-hidden'));
+    } else {
+        extensionCards.forEach(card => {
+            card.classList.remove('extension-card-hidden');
+        });
+    }
+}
 
+function _resetVisibilityOfExtensionCards(setVisible) {
+    document.querySelectorAll('.extension-card').forEach(card => {
+        if (setVisible) {
+            card.classList.remove('extension-card-hidden');
+        } else {
+            card.classList.add('extension-card-hidden');
+        }
+    });
 }
 
 function _populateExtensions() {
