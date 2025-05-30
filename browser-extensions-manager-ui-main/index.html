@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  
+  <title>Frontend Mentor | Browser extensions manager UI</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="page-container">
+    <div class="main-toolbar">
+      <div class="main-toolbar-content-container main-toolbar-content-container-1">
+        <div class="main-toolbar-extensions-icon"></div>
+        <input type="text" class="main-toolbar-searchbar" />
+      </div>
+      <div class="main-toolbar-content-container main-toolbar-content-container-2">
+        <div class="main-toolbar-color-state-button-container">
+          <button class="main-toolbar-color-state-button"></button>
+        </div>
+      </div>
+    </div>
+    <div class="extensions-info">
+      <h2 class="extensions-list-title">Extensions List</h2>
+      <div class="extensions-filter-buttons">
+        <button class="all-filter-button">All</button>
+        <button class="active-filter-button">Active</button>
+        <button class="inactive-filter-button">Inactive</button>
+      </div>
+    </div>
+    <div class="extensions-grid">
+      <!-- Will be populated with extensions via JavaScript-->
+    </div>
+  </div>
+
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

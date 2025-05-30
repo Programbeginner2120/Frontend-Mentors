@@ -1,0 +1,97 @@
+:root {
+    --light-mode-background-color: lightgrey;
+    --dark-mode-background-color: darkslategray;
+    --light-mode-toolbar-color: white;
+    --dark-mode-toolbar-color: slategray;
+    --light-mode-color-state-button-container-color: lightgray;
+    --dark-mode-color-state-button-container-color: transparent;
+    --element-width: 80%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--light-mode-background-color);
+    min-height: 100vh;
+}
+
+.page-container-dark-mode {
+    background-color: var(--dark-mode-background-color);
+}
+
+.main-toolbar {
+    display: flex;
+    height: 60px;
+    width: var(--element-width);
+    align-items: center;
+    border: 1px solid black;
+    position: relative;
+    gap: 8px;
+    background-color: var(--light-mode-toolbar-color);
+    border-radius: 15px;
+    margin-top: 1%;
+}
+
+.main-toolbar-dark-mode {
+    background-color: var(--dark-mode-toolbar-color);
+}
+
+.main-toolbar-content-container {
+    display: flex;
+    gap: 8px;
+}
+
+.main-toolbar-content-container-1 {
+    position: absolute;
+    left: 2.5%;
+    right: 8%;
+    border: 1px solid black;
+}
+
+.main-toolbar-content-container-2 {
+    position: absolute;
+    right: 2.5%;
+    border: 1px solid black;
+}
+
+.main-toolbar-extensions-icon {
+    background-image: url('./assets/images/logo.svg');
+    width: 179px;
+    height: 41px;
+}
+
+.main-toolbar-color-state-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 41px;
+    width: 44px;
+    background-color: var(--light-mode-color-state-button-container-color);
+}
+
+.main-toolbar-color-state-button-container-dark-mode {
+    background-color: var(--dark-mode-color-state-button-container-color);
+}
+
+.main-toolbar-color-state-button {
+    all: unset;
+    height: 50%;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-toolbar-searchbar {
+    all: unset;
+    border: 1px solid black;
+    margin: 5px 0;
+    margin-right: 5px;
+    flex-grow: 1;
+}
